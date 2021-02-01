@@ -12,6 +12,10 @@ public class WebMyappApplication extends SpringBootServletInitializer {
 		return application.sources(WebMyappApplication.class);
 	}
 	public static void main(String[] args) {
+
 		SpringApplication.run(WebMyappApplication.class, args);
+
+		System.out.println("\n\n CLIQUE NO LINK PARA ABRIR SUA APLICAÇÃO ==>  http://localhost:8080/ \n\n");
+
 	}
 }

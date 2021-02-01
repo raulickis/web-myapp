@@ -18,10 +18,24 @@ dependencies {
 	implementation 'org.springframework.session:spring-session-core'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-	compile 'javax.servlet:jstl'
-	compile 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	runtimeOnly 'javax.servlet:jstl'
+	runtimeOnly 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
+
+//dependencies {
+//	implementation   'org.springframework.boot:spring-boot-starter-web'
+//	implementation   'org.springframework.session:spring-session-core'
+//	implementation   'org.apache.tomcat.embed:tomcat-embed-jasper'
+//	providedRuntime  'org.springframework.boot:spring-boot-starter-tomcat'
+//	providedRuntime  'javax.servlet:jstl'
+////	providedCompile  'tomcat:jasper-compiler:5.5.23'
+//	implementation   'org.apache.tomcat.embed:tomcat-embed-jasper'
+//	providedRuntime  'org.eclipse.jdt.core.compiler:ecj:4.4'
+//	providedRuntime  'javax.servlet:javax.servlet-api'
+//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//}
 
 test {
 	useJUnitPlatform()

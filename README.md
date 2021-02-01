@@ -1,13 +1,22 @@
+# web-myapp
 
+Modelo de cadastro simples de Usuários e Endereços utilizando o Spring Boot Web, Bootstrap e JSP.
 
-https://spring.io/guides/topicals/spring-boot-docker/
+Depende da api-myapp (https://github.com/raulickis/api-myapp)
 
+## Para gerar a imagem docker:
 
-
-
-./gradlew build && java -jar build/libs/web-myapp-0.1.0.jar
-
-
-docker build --build-arg JAR_FILE=build/libs/\*.jar -t raulickis/web-myapp .
-
+```
+./gradlew build --warning-mode all 
 docker build -t raulickis/web-myapp .
+```
+
+## Para executar o projeto com as dependências:
+
+```
+docker-compose up 
+```
+
+E na sequencia abrir no Navegador a seguinte URL:
+
+http://localhost:8080
