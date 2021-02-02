@@ -11,6 +11,8 @@
 <body>
 	<jsp:include page="../menu.jsp" />
 
+	<jsp:include page="../message.jsp" />
+
 	<div class="container mt-3">
 		<h2 class="text-center">Usuários</h2>
 		<hr/>
@@ -38,7 +40,7 @@
 						<td class="d-none d-sm-table-cell">${usuario.email }</td>
 						<td class="d-none d-sm-table-cell">(${usuario.ddd}) ${usuario.telefone}</td>
 						<td class="d-none d-sm-table-cell" title="${usuario.dataCadastroFormatted}">${usuario.dataCadastroFormattedSimple}</td>
-						<td class="text-nowrap"><i class="bi-pencil" title="Alterar"></i>&nbsp; <i class="bi-x-square" title="Excluir"></i> </td>
+						<td class="text-nowrap"><i class="bi-pencil" title="Alterar"></i>&nbsp; <a href="/usuario/apagar/${usuario.id}"><i class="bi-x-square" title="Excluir"></i></a> </td>
 					</tr>
 				</c:forEach>
 			</tbody>

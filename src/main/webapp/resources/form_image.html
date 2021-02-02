@@ -1,0 +1,74 @@
+<div class="form-group ">
+    <div class="mb-8 view overlay zoom " >
+      {% if action != "Visualizar" %}
+        <a href="#modPictures" class="d-block" onclick="$('#modPictures').modal('toggle')">
+      {% endif %}
+          <img class="img-fluid rounded mx-auto d-block " width=200 id="avatar"
+          {% if action != "Visualizar" %}
+               title="Toque na imagem para alterá-la"
+          {% endif %}
+          {% if myform.imageUrl %} src="{{myform.imageUrl}}"
+          {% else %}
+            {% if t=='company' or t=='pdv' or t=='pdvcomp'%} src="{{COMPANY_AVATAR_DEFAULT}}"
+            {% elif t=='playlist'%} src="{{PLAYLIST_AVATAR_DEFAULT}}"
+            {% else %} src="{{USER_AVATAR_DEFAULT}}"
+            {% endif %}
+          {% endif %}
+          />
+      {% if action != "Visualizar" %}
+        </a>
+      {% endif %}
+    </div>
+</div>
+<div class="d-none">
+    <label for="imagePic">URL</label>
+    <input type="file"  id="imagePic" name="imagePic" class="form-control-file" value=""
+           title="Foto {{g.tp['name_t']}}"
+           onchange="readURL(this, form1.avatar);$('#modPictures').modal('toggle');"
+           accept=".png,.png,.png,.gif,.bmp" />
+    <label for="imageUrl">URL</label>
+    <input type="text" name="imageUrl" id="imageUrl"
+          {% if myform.imageUrl %}
+           value="{{myform.imageUrl}}"
+          {% else %}
+            {% if t=='company' or t=='pdv' or t=='pdvcomp'  %}
+                value="{{COMPANY_AVATAR_DEFAULT}}"
+            {% elif t=='playlist' %}
+                value="{{PLAYLIST_AVATAR_DEFAULT}}"
+            {% else %}
+                value="{{USER_AVATAR_DEFAULT}}"
+            {% endif %}
+          {% endif %}
+           class="form-control"/>
+</div>
+<div class="modal fade" id="modPictures" tabindex="-1" role="dialog" aria-labelledby="modPicturesTitle" aria-hidden="true" style="z-index:9999;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modPicturesTitle">Opções de Imagens</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <center>
+         <br><a href="#" onclick="chooseFile(form1.imagePic, form1.avatar);">Carregar imagem personalizada...</a><br><br>
+
+         {%for i in range(1, 12)%}
+         <a href="#" class="overlay zoom" onclick="updateImage(form1.avatar, form1.imageUrl,'/static/pic/user_avatar_{{"{0:0>2}".format(i)}}.png');">
+            <img class="mx-2 my-2" name='listPic' href="#" width="100px" src='/static/pic/user_avatar_{{"{0:0>2}".format(i)}}.png'/>
+         </a>
+         {%endfor%}
+         {%for i in range(1, 7)%}
+         <a href="#" class="overlay zoom" onclick="updateImage(form1.avatar, form1.imageUrl,'/static/pic/company_avatar_{{"{0:0>2}".format(i)}}.png');">
+         <img class="mx-2 my-2 view overlay zoom" width="100px" src='/static/pic/company_avatar_{{"{0:0>2}".format(i)}}.png' />
+         </a>
+         {%endfor%}
+          </center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary mx-auto" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
