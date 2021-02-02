@@ -25,7 +25,7 @@ public class UsuarioController {
 
 	final private ObjectMapper objectMapper = new ObjectMapper();
 
-	@RequestMapping("/usuario/listaUsuarios")
+	@RequestMapping("/usuario/listar")
 	public String index(Map<String, Object> model){
 		String json = usuarioService.listUsers();
 		try {
@@ -36,7 +36,13 @@ public class UsuarioController {
 		}
 		return "usuarios/lista-usuarios";
 	}
-	
+
+	@RequestMapping("/usuario/cadastrar")
+	public String create(Map<String, Object> model){
+		return "usuarios/formulario-usuario";
+	}
+
+
 //	/**
 //	 * Lista os usuários cadastrados
 //	 * @return página lista-usuarios.jsp

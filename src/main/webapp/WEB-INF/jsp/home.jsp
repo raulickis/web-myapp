@@ -8,18 +8,14 @@
 <body>
     <jsp:include page="menu.jsp" />
 
-    <div class="container">
-        <div class="starter-template">
-            <h1> Menu</h1>
-            <p class="lead">
-                <a href="/usuario/listaUsuarios">Lista de Usuários</a> <br>
-                <a href="/usuario/novoUsuario">Novo usuário</a> <br>
-            <p>
-        </div>
+    <div class="container mt-4 text-center">
+        <h1> Menu</h1>
+        <p class="lead">
+            <a href="/usuario/listar">Lista de Usuários</a> <br>
+            <a href="/usuario/cadastrar">Novo usuário</a> <br>
+        <p>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="/resources/js/bootstrap.min.js"></script>
+    <jsp:include page="footer.jsp" />
 </body>
 </html>
 

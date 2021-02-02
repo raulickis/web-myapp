@@ -20,3 +20,8 @@ docker-compose up
 E na sequencia abrir no Navegador a seguinte URL:
 
 http://localhost:8080
+
+
+## Links úteis
+
+Lista de ícones do Bootstrap => https://icons.getbootstrap.com/

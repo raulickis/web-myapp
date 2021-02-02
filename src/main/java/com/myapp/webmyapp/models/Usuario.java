@@ -127,6 +127,11 @@ public class Usuario {
         return formatter.format(dataCadastro);
     }
 
+    public String getDataCadastroFormattedSimple() {
+        SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yy");
+        return formatter.format(dataCadastro);
+    }
+
     @JsonProperty("data_cadastro")
     public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
