@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <jsp:include page="header.jsp" />
+    <jsp:include page="componentes/header.jsp" />
 </head>
 <body>
-    <jsp:include page="menu.jsp" />
+    <jsp:include page="componentes/menu.jsp" />
 
     <div class="container mt-4 text-center">
         <h1> Menu</h1>
@@ -15,7 +15,7 @@
             <a href="/usuario/cadastrar">Novo usuário</a> <br>
         <p>
     </div>
-    <jsp:include page="footer.jsp" />
+    <jsp:include page="componentes/footer.jsp" />
 </body>
 </html>
 

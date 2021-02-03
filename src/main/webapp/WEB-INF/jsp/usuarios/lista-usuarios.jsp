@@ -5,13 +5,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<jsp:include page="../header.jsp" />
+	<jsp:include page="../componentes/header.jsp" />
 </head>
 
 <body>
-	<jsp:include page="../menu.jsp" />
+	<jsp:include page="../componentes/menu.jsp" />
 
-	<jsp:include page="../message.jsp" />
+	<jsp:include page="../componentes/message.jsp" />
 
 	<div class="container mt-3">
 		<h2 class="text-center">Usuários</h2>
@@ -40,16 +40,20 @@
 						<td class="d-none d-sm-table-cell">${usuario.email }</td>
 						<td class="d-none d-sm-table-cell">(${usuario.ddd}) ${usuario.telefone}</td>
 						<td class="d-none d-sm-table-cell" title="${usuario.dataCadastroFormatted}">${usuario.dataCadastroFormattedSimple}</td>
-						<td class="text-nowrap"><i class="bi-pencil" title="Alterar"></i>&nbsp; <a href="/usuario/apagar/${usuario.id}"><i class="bi-x-square" title="Excluir"></i></a> </td>
+						<td class="text-nowrap">
+							<a href="/usuario/editar/${usuario.id}"><i class="bi-pencil" title="Alterar"></i></a>
+							&nbsp;
+							<a href="/usuario/apagar/${usuario.id}"><i class="bi-x-square" title="Excluir"></i></a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<div align="center">
-			<button type="submit" class="btn btn-primary" onclick="window.location.href='/'">Voltar</button>
+			<button class="btn btn-primary" onclick="window.location.href='/'">Voltar</button>
 			<button type="submit" class="btn btn-primary" onclick="window.location.href='/usuario/cadastrar'">Novo</button>
 		</div>
 	</div>
-	<jsp:include page="../footer.jsp" />
+	<jsp:include page="../componentes/footer.jsp" />
 </body>
 </html>

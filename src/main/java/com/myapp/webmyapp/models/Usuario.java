@@ -122,14 +122,16 @@ public class Usuario {
         return dataCadastro;
     }
 
+    @JsonProperty("data_cadastro_formatted")
     public String getDataCadastroFormatted() {
         SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        return formatter.format(dataCadastro);
+        return dataCadastro != null ? formatter.format(dataCadastro) : null;
     }
 
+    @JsonProperty("data_cadastro_formatted_simple")
     public String getDataCadastroFormattedSimple() {
         SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yy");
-        return formatter.format(dataCadastro);
+        return dataCadastro != null ? formatter.format(dataCadastro) : null;
     }
 
     @JsonProperty("data_cadastro")

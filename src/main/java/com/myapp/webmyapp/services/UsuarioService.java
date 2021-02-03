@@ -37,9 +37,26 @@ public class UsuarioService {
         return userList;
     }
 
-    public Map<String, Object> save(Usuario user) {
+    public Usuario get(String id) {
 
-        user.setDataCadastro(new Date());
+        Usuario user = new Usuario();
+
+        ApiService request = new ApiService();
+
+        String json = request.DoGet(apiUrl + uri + "/" + id);
+
+        if (json != null) {
+            try {
+                user = objectMapper.readValue(json, new TypeReference<Usuario>(){});
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return user;
+    }
+
+    public Map<String, Object> saveOrUpdate(Usuario user) {
 
         String json = new String();
         try {
@@ -50,7 +67,11 @@ public class UsuarioService {
 
         ApiService request = new ApiService();
 
-        return request.DoPost(apiUrl + uri, json);
+        if (user.getId() == null) {
+            return request.DoPost(apiUrl + uri, json);
+        } else {
+            return request.DoPut(apiUrl + uri + "/" + user.getId(), json);
+        }
     }
 
     public void delete (String id) {
