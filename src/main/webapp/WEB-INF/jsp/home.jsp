@@ -12,7 +12,9 @@
         <h1> Menu</h1>
         <p class="lead">
             <a href="/usuario/listar">Lista de Usuários</a> <br>
-            <a href="/usuario/cadastrar">Novo usuário</a> <br>
+            <a href="/usuario/cadastrar">Novo Usuário</a> <br>
+            <a href="/endereco/listar">Lista de Endereços</a> <br>
+            <a href="/endereco/cadastrar">Novo Endereço</a> <br>
         <p>
     </div>
     <jsp:include page="componentes/footer.jsp" />

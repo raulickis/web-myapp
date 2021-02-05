@@ -93,6 +93,9 @@
 		<div class="invalid-feedback">
 			Por favor, insira um estado válido.
 		</div>
+		<script>
+			window.document.getElementById("uf").value = '${endereco.uf}';
+		</script>
 	</div>
 	<div class="col-md-4 mb-3">
 		<label for="pais">País</label>

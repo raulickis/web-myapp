@@ -12,15 +12,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Cadastros
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Usuários</a>
-                    <a class="dropdown-item" href="#">Endereços</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item disabled" href="#">Outros</a>
-                </div>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastros</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Usuários</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/usuario/listar">Lista de Usuários</a></li>
+                            <li><a class="dropdown-item" href="/usuario/cadastrar">Novo Usuário</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Endereços</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/endereco/listar">Lista de Endereços</a></li>
+                            <li><a class="dropdown-item" href="/endereco/cadastrar">Novo Endereço</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Sobre</a>

@@ -2,6 +2,7 @@ package com.myapp.webmyapp.services;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.myapp.webmyapp.models.Endereco;
 import com.myapp.webmyapp.models.Usuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ public class UsuarioService {
     private String apiUrl;
 
     private static String uri = "/cadastro/usuario";
+    private static String uriEndereco = "/cadastro/endereco";
 
     final private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -68,9 +70,35 @@ public class UsuarioService {
         ApiService request = new ApiService();
 
         if (user.getId() == null) {
+
+            // Novo Usuario
             return request.DoPost(apiUrl + uri, json);
+
         } else {
-            return request.DoPut(apiUrl + uri + "/" + user.getId(), json);
+
+            // Alteração de Usuario
+            Map<String, Object>  result = request.DoPut(apiUrl + uri + "/" + user.getId(), json);
+            if (result.get("Errors") != null) {
+                return result;
+            }
+
+            // Atualiza Endereço por ID, uma vez que não fizemos a alteração de endereço na API
+            Endereco endereco = user.getEnderecos().get(0);
+            try {
+                json = objectMapper.writeValueAsString(endereco);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (endereco.getId() == null) {
+                // Insere Endereço
+                result = request.DoPost(apiUrl + uriEndereco, json);
+            }else {
+                // Altera Endereço
+                result = request.DoPut(apiUrl + uriEndereco + "/" + endereco.getId(), json);
+            }
+
+            return result;
         }
     }
 
