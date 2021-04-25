@@ -1,27 +1,6 @@
 version: '3.5'
 services:
 
-  postgres:
-    container_name: postgres
-    image: postgres:10.12-alpine
-    extra_hosts:
-      - "host.docker.internal:172.17.0.1"
-    volumes:
-      - $HOME/workspace/myapp/database:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_PASSWORD=1234
-
-  api-myapp:
-    container_name: api-myapp
-    image: raulickis/api-myapp:latest
-    restart: on-failure
-    extra_hosts:
-      - "host.docker.internal:172.17.0.1"
-    ports:
-      - '9990:9990'
-
   web-myapp:
     container_name: web-myapp
     image: raulickis/web-myapp:latest
