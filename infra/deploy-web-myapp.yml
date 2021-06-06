@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-myapp
@@ -9,11 +9,25 @@ spec:
     rollingUpdate:
       maxSurge: 2
       maxUnavailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: web-myapp
   template:
     metadata:
       labels:
-        app: web-myapp
+        app.kubernetes.io/name: web-myapp
     spec:
+      ###################### Shared volume and init container ##########################
+      volumes:
+      - name: elastic-apm-agent
+        emptyDir: {}
+      initContainers:
+      - name: elastic-java-agent
+        image: docker.elastic.co/observability/apm-agent-java:1.24.0
+        volumeMounts:
+        - mountPath: /elastic/apm/agent
+          name: elastic-apm-agent
+        command: ['cp', '-v', '/usr/agent/elastic-apm-agent.jar', '/elastic/apm/agent']
       containers:
         - name: web-myapp
           image: raulickis/web-myapp:latest
@@ -45,6 +59,13 @@ spec:
             limits:
               cpu: "800m"
               memory: "1Gi"
+          ######################### Volume path and agent config ###########################
+          volumeMounts:
+          - mountPath: /elastic/apm/agent
+            name: elastic-apm-agent
+          env:
+          - name: JAVA_TOOL_OPTIONS
+            value: -javaagent:/elastic/apm/agent/elastic-apm-agent.jar
           envFrom:
             - configMapRef:
                 name: web-myapp-config
@@ -60,4 +81,4 @@ spec:
       targetPort: 8080
       protocol: TCP
   selector:
-    app: web-myapp
+    app.kubernetes.io/name: web-myapp

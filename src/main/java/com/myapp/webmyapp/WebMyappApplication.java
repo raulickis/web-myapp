@@ -1,5 +1,6 @@
 package com.myapp.webmyapp;
 
+import co.elastic.apm.attach.ElasticApmAttacher;
 import io.prometheus.client.exporter.HTTPServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +16,9 @@ public class WebMyappApplication extends SpringBootServletInitializer {
 		return application.sources(WebMyappApplication.class);
 	}
 	public static void main(String[] args) {
+
+		// Start Elasticsearch APM
+		ElasticApmAttacher.attach();
 
 		// Start Prometheus Server Metrics (/metrics) in a separate Thread
 		try {
